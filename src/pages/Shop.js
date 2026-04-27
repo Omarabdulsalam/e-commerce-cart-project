@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './Shop.css';
 
@@ -48,6 +48,7 @@ const shoes = [
 
 const Shop = ({ addToCart }) => {
   const location = useLocation();
+  const [addedShoe, setAddedShoe] = useState(null);
   const shoeRefs = useRef({});
 
   useEffect(() => {
@@ -77,7 +78,9 @@ const Shop = ({ addToCart }) => {
               <h3>{shoe.name}</h3>
               <p className="tagline">{shoe.tagline}</p>
               <p className="price">${shoe.price}</p>
-              <button onClick={() => addToCart(shoe)}>Add to Cart</button>
+              <button onClick={() => { addToCart(shoe); setAddedShoe(shoe.id); setTimeout(() => setAddedShoe(null), 1500); }}>
+                {addedShoe === shoe.id ? '✓ Added!' : 'Add to Cart'}
+              </button>
             </div>
           </div>
         ))}

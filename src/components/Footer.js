@@ -32,7 +32,8 @@ const styles = {
     backgroundColor: '#4B709F',
     color: '#fff',
     padding: '30px 20px 10px',
-    marginTop: '50px',
+    marginTop: 'auto',
+    marginBottom: '0',
   },
   footerContent: {
     display: 'flex',

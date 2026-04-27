@@ -41,17 +41,19 @@ function App() {
 
   return (
     <Router>
-      <Header cartCount={cart.length} allShoes={allShoesArray} /> {/* ✅ Important */}
+      <div className='app-container'>
+        <Header cartCount={cart.length} allShoes={allShoesArray} /> {/* ✅ Important */}
 
-      <Routes>
-        <Route path="/" element={<Home addToCart={addToCart} />} />
-        <Route path="/shop" element={<Shop addToCart={addToCart} />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/cart" element={<Cart cartItems={cart} removeFromCart={removeFromCart} />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Home addToCart={addToCart} />} />
+          <Route path="/shop" element={<Shop addToCart={addToCart} />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/cart" element={<Cart cartItems={cart} removeFromCart={removeFromCart} />} />
+        </Routes>
 
       <Footer />
+      </div>
     </Router>
   );
 }

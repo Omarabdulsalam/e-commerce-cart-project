@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState }  from 'react';
 import './Home.css';
 import bannerImage from '../Assets/banner.jpg';
 
@@ -23,6 +23,9 @@ const bestSellers = [
 ];
 
 const Home = ({ addToCart }) => {
+  
+  const [addedShoe, setAddedShoe] = useState(null);
+
   return (
     <div className="home">
 
@@ -48,8 +51,8 @@ const Home = ({ addToCart }) => {
               <p className="shoe-tagline">{shoe.tagline}</p>
               <p className="shoe-price">${shoe.price}</p>
               {addToCart && (
-                <button onClick={() => addToCart(shoe)} className="add-to-cart-btn">
-                  Add to Cart
+                <button onClick={() => { addToCart(shoe); setAddedShoe(shoe.id); setTimeout(() => setAddedShoe(null), 1500); }} className="add-to-cart-btn">
+                  {addedShoe === shoe.id ? '✓ Added!' : 'Add to Cart'}
                 </button>
               )}
             </div>
